@@ -1,0 +1,22 @@
+name: Deploy to Kubernetes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up kubectl
+      uses: docker://lachlanevenson/k8s-kubectl:v1.22.2
+      with:
+        args: kubectl apply -f ./k8s/
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}

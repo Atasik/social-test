@@ -1,0 +1,5 @@
+.env
+.bin
+.css
+.vscode
+.golangci.yml
