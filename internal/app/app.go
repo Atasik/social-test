@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"github.com/go-playground/validator"
-	_ "github.com/lib/pq"
 	"go.uber.org/zap"
 )
 

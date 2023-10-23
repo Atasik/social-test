@@ -41,6 +41,8 @@ func (h *handler) createPost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	h.logger.Infof("Post was created: %d", post.ID)
+
 	w.WriteHeader(http.StatusCreated)
 	if err = json.NewEncoder(w).Encode(post); err != nil {
 		newErrorResponse(w, "server error", http.StatusInternalServerError)
@@ -96,6 +98,8 @@ func (h *handler) deletePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	h.logger.Infof("Post was created: %d", postID)
+
 	newStatusReponse(w, "done", http.StatusOK)
 }
 
@@ -135,6 +139,8 @@ func (h *handler) updatePost(w http.ResponseWriter, r *http.Request) {
 		newErrorResponse(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+
+	h.logger.Infof("Post was updated: %d", postID)
 
 	post, err := h.services.GetByID(postID)
 	if err != nil {
