@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: social-app
-        image: social:latest
+        image: atasik/social:latest
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
